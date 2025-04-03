@@ -19,7 +19,7 @@
     <ul class="main-menu" id="main-menu container">
       <li><a href="index.html">Domov</a></li>
       <li><a href="portfolio.html">Portfólio</a></li>
-      <li><a href="qna.html">Q&A</a></li>
+      <li><a href="qna.php">Q&A</a></li>
       <li><a href="kontakt.html">Kontakt</a></li>
     </ul>
     <a class="hamburger" id="hamburger">
@@ -39,6 +39,26 @@
           <p><strong><em>Elit culpa id mollit irure sit. Ex ut et ea esse culpa officia ea incididunt elit velit veniam qui. Mollit deserunt culpa incididunt laborum commodo in culpa.</em></strong></p>
         </div>
       </div>
+
+<?php
+require_once "QnAClass.php";
+
+use otazkyodpovede\QnA;
+
+$qna = new QnA();
+$otazkyOdpovede = $qna->getQnA();
+?>
+
+<section class="container">
+    <?php foreach ($otazkyOdpovede as $qna) { ?>
+        <div class="accordion">
+            <div class="question"><?php echo $qna['question']; ?></div>
+            <div class="answer"><?php echo $qna['answer']; ?></div>
+        </div>
+    <?php } ?>
+</section>
+
+
     </section>
       <section class="container">
       <?php include "otazky.php"; ?>    
